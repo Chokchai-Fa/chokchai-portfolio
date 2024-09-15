@@ -1,13 +1,11 @@
 "use client";
 
 import Link from 'next/link'
-// import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LinkUrl } from './type';
 
 
-
-
-const links: Link[] = [
+const links: LinkUrl[] = [
     {
         name: "home",
         path: "/"

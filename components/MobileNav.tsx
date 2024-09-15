@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { CiMenuFries } from 'react-icons/ci'
 import { usePathname } from 'next/navigation';
+import { LinkUrl } from './type';
 
-const links: Link[] = [
+const links: LinkUrl[] = [
     {
         name: "home",
         path: "/"
