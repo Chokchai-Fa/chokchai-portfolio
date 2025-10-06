@@ -18,13 +18,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Generate timestamp and short SHA
+    - name: Generate semantic version tag
       id: vars
       run: |
-        TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+        # Generate semantic version using run number and short SHA
+        MAJOR=1
+        MINOR=0
+        PATCH=${{ github.run_number }}
         SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)
-        echo "timestamped_tag=${TIMESTAMP}-sha-${SHORT_SHA}" >> $GITHUB_OUTPUT
-        echo "Generated tag: ${TIMESTAMP}-sha-${SHORT_SHA}"
+        SEMVER_TAG="v${MAJOR}.${MINOR}.${PATCH}-${SHORT_SHA}"
+        echo "semver_tag=${SEMVER_TAG}" >> $GITHUB_OUTPUT
+        echo "Generated semver tag: ${SEMVER_TAG}"
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
@@ -43,7 +47,7 @@ jobs:
       with:
         images: ${{ env.DOCKER_REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
         tags: |
-          type=raw,value=${{ steps.vars.outputs.timestamped_tag }},enable={{is_default_branch}}
+          type=raw,value=${{ steps.vars.outputs.semver_tag }},enable={{is_default_branch}}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
@@ -60,10 +64,3 @@ jobs:
     - name: Image digest
       if: github.event_name != 'pull_request'
       run: echo ${{ steps.build-and-push.outputs.digest }}
-
-    - name: Trigger Flux reconciliation
-      if: github.event_name != 'pull_request'
-      run: |
-        curl -X POST "${{ secrets.FLUX_WEBHOOK_URL }}" \
-          -H "Content-Type: application/json" \
-          -d '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
