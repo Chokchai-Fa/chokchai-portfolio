@@ -20,6 +20,55 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Docker Deployment
+
+This project includes Docker support for containerized deployment.
+
+### Building and Running with Docker
+
+```bash
+# Build the Docker image
+docker build -t chokchai-portfolio .
+
+# Run the container
+docker run -p 3000:3000 chokchai-portfolio
+```
+
+### GitHub Actions CI/CD Pipeline
+
+This repository includes a GitHub Actions workflow that automatically builds and pushes Docker images to Docker Hub when code is pushed to the main branch.
+
+#### Setting up Docker Hub Integration
+
+To enable automatic Docker image publishing, you need to set up the following secrets in your GitHub repository:
+
+1. Go to your GitHub repository settings
+2. Navigate to "Secrets and variables" → "Actions"
+3. Add the following repository secrets:
+   - `DOCKER_USERNAME`: Your Docker Hub username
+   - `DOCKER_PASSWORD`: Your Docker Hub access token (recommended) or password
+
+#### Creating a Docker Hub Access Token (Recommended)
+
+1. Log in to [Docker Hub](https://hub.docker.com/)
+2. Go to Account Settings → Security
+3. Click "New Access Token"
+4. Give it a descriptive name (e.g., "GitHub Actions")
+5. Copy the generated token and use it as `DOCKER_PASSWORD` secret
+
+#### Workflow Features
+
+- Builds Docker images for multiple architectures (linux/amd64, linux/arm64)
+- Pushes images only on pushes to main branch (not on pull requests)
+- Uses Docker layer caching for faster builds
+- Tags images with branch name, commit SHA, and "latest" for main branch
+- Only builds on pull requests without pushing to registry
+
+The workflow will create images with tags like:
+- `your-username/chokchai-portfolio:latest`
+- `your-username/chokchai-portfolio:main`
+- `your-username/chokchai-portfolio:main-abc1234`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
