@@ -20,14 +20,11 @@ const Home = (): JSX.Element => {
               Hello I&apos;m <br /> <span className="text-accent">Chokchai Faroongsarng</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
-              when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was popularised in the
-              1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-              recently with desktop publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              Experienced Software Engineer with 3+ years of expertise across financial, insurance, 
+              and social network domains. I specialize in turning complex business requirements into 
+              scalable, high-performance solutions that serve millions of users. Currently working at 
+              LINE Company, I excel in full-stack development, cloud infrastructure, and coordinating 
+              cross-functional teams to deliver innovative technological solutions.
             </p>
 
             <div className="flex flex-col xl:flex-row items-center gap-8">

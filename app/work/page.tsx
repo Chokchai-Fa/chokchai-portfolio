@@ -12,6 +12,60 @@ import {
   Briefcase
 } from "lucide-react";
 
+// Animation variants
+const fadeInUp = {
+  initial: {
+    opacity: 0,
+    y: 60
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const scaleIn = {
+  initial: {
+    opacity: 0,
+    scale: 0.8
+  },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+const slideInLeft = {
+  initial: {
+    opacity: 0,
+    x: -60
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
 const workExperience = [
   {
     id: "line",
@@ -86,7 +140,7 @@ const workExperience = [
       "Collaborating with cross-functional teams for optimal service delivery",
       "Contributing innovative solutions for evolving customer needs in banking industry"
     ],
-    skills: ["Spring Boot", "Docker", "Jenkins", "Node.js", "React Native", "React JS"],
+    skills: ["Spring Boot", "Docker", "Jenkins", "Node.js", "React Native", "ReactJS"],
     color: "from-yellow-500 to-orange-600"
   },
   {
@@ -123,22 +177,30 @@ const Work = (): JSX.Element => {
       <div className="container mx-auto">
         <div className="flex flex-col gap-[60px]">
           {/* Overview Section */}
-          <div className="flex flex-col gap-[30px] text-center xl:text-left">
+          <motion.section 
+            className="flex flex-col gap-[30px] text-center xl:text-left"
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
               className="text-4xl font-bold"
+              variants={fadeInUp}
             >
               Career <span className="text-accent">Overview</span>
             </motion.h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
                 className="bg-[#27272c] rounded-xl p-6 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30"
+                variants={scaleIn}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
@@ -146,17 +208,15 @@ const Work = (): JSX.Element => {
                   </div>
                   <h4 className="text-lg font-semibold">Experience</h4>
                 </div>
-                <p className="text-2xl font-bold text-accent mb-2">3+ Years</p>
+                <p className="text-2xl font-bold text-accent mb-2">{new Date().getFullYear() - 2022}+ Years</p>
                 <p className="text-white/60 text-sm">
                   Professional software development experience across multiple industries
                 </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
                 className="bg-[#27272c] rounded-xl p-6 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30"
+                variants={scaleIn}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
@@ -171,10 +231,8 @@ const Work = (): JSX.Element => {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
                 className="bg-[#27272c] rounded-xl p-6 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30"
+                variants={scaleIn}
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center">
@@ -187,13 +245,14 @@ const Work = (): JSX.Element => {
                   End-to-end development with modern technologies and practices
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
               className="bg-[#27272c] rounded-xl p-8 border border-accent/10 hover:bg-[#2a2a30] transition-colors hover:border-accent/30"
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
             >
               <h4 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2">
                 <Briefcase className="h-5 w-5 text-accent" />
@@ -218,23 +277,25 @@ const Work = (): JSX.Element => {
                 </div>
               </div>
             </motion.div>
-          </div>
+          </motion.section>
 
           {/* Experience Section */}
-          <div className="flex flex-col gap-[30px] text-center xl:text-left">
+          <motion.section 
+            className="flex flex-col gap-[30px] text-center xl:text-left"
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
               className="text-4xl font-bold"
+              variants={fadeInUp}
             >
               My <span className="text-accent">Journey</span>
             </motion.h3>
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4 }}
               className="text-white/60 mx-auto xl:mx-0"
+              variants={fadeInUp}
             >
               A comprehensive overview of my professional experience, showcasing 
               my growth from intern to solution engineer at leading technology companies.
@@ -244,19 +305,23 @@ const Work = (): JSX.Element => {
               {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-px bg-accent/20 hidden md:block"></div>
               
-              <div className="space-y-8">
-                {workExperience.map((job, index) => (
+              <motion.div 
+                className="space-y-8"
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.1 }}
+              >
+                {workExperience.map((job) => (
                   <motion.div
                     key={job.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.6 + index * 0.1 }}
                     className="relative group"
+                    variants={slideInLeft}
                   >
                     {/* Timeline dot */}
                     <div className="absolute left-6 top-6 w-4 h-4 bg-accent rounded-full border-4 border-primary z-10 hidden md:block group-hover:scale-125 transition-transform"></div>
                     
-                    <div className="bg-[#27272c] rounded-xl p-6 ml-0 md:ml-16 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30">
+                    <div className="bg-[#27272c] rounded-xl p-6 ml-0 md:ml-16 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30 text-left">
                       <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                         <div className="flex-1">
                           <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
@@ -266,8 +331,8 @@ const Work = (): JSX.Element => {
                             </span>
                           </div>
                           
-                          <div className="flex items-center gap-2 mb-2 text-white/60">
-                            <Building2 className="h-4 w-4" />
+                          <div className="flex items-start gap-2 mb-2 text-white/60">
+                            <Building2 className="h-4 w-4 mt-1.5 flex-shrink-0" />
                             <span className="font-medium">{job.company}</span>
                           </div>
                           
@@ -316,9 +381,9 @@ const Work = (): JSX.Element => {
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.section>
         </div>
       </div>
     </motion.div>

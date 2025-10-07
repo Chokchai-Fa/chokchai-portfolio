@@ -17,9 +17,6 @@ const Header = (): JSX.Element => {
         {/* desktop nav */}
         <div className='hidden xl:flex item-center gap-8'>
           <Nav />
-          <Link href="/contact">
-            <Button>Hire me</Button>
-          </Link>
         </div>
 
 

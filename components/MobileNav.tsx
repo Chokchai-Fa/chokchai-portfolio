@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { CiMenuFries } from 'react-icons/ci'
@@ -28,14 +28,24 @@ const links: LinkUrl[] = [
 
 const MobileNav = (): JSX.Element => {
     const pathName: string = usePathname();
-    return <Sheet>
-        <SheetTrigger className='flex justify-center items-center'>
-            <CiMenuFries className='text-[32px] text-accent' />
+    const [open, setOpen] = useState(false);
+
+    const handleLinkClick = () => {
+        setOpen(false);
+    };
+
+    return (
+        <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger className='flex justify-center items-center'>
+                <CiMenuFries className='text-[32px] text-accent' />
+            </SheetTrigger>
+            
             <SheetContent className='flex flex-col'>
                 <div className='mt-32 mb-40 text-center text-2xl'>
-                    <Link href="/">
+                    <Link href="/" onClick={handleLinkClick}>
                         <h1 className='text-4xl font-semibold'>
-                            Chokchai<span className='text-accent'>.</span></h1>
+                            Chokchai<span className='text-accent'>.</span>
+                        </h1>
                     </Link>
                 </div>
 
@@ -45,21 +55,19 @@ const MobileNav = (): JSX.Element => {
                             <Link
                                 href={link.path}
                                 key={index}
+                                onClick={handleLinkClick}
                                 className={`${link.path === pathName &&
-                                    "text-accent border-b-2 border-accent"}text-xl 
+                                    "text-accent border-b-2 border-accent"} text-xl 
                                     capitalize hover:text-accent transition-all`}
                             >
                                 {link.name}
                             </Link>
                         )
-
                     })}
                 </nav>
             </SheetContent>
-
-        </SheetTrigger>
-
-    </Sheet>
+        </Sheet>
+    );
 }
 
 export default MobileNav;
