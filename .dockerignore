@@ -1,14 +1,65 @@
-Dockerfile
+# Docker files
+Dockerfile*
 .dockerignore
+docker-compose*
+
+# Dependencies
 node_modules
-npm-debug.log
-README.md
-.env
-.git
-.gitignore
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
 .next
 .vercel
+out/
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Git
+.git
+.gitignore
+
+# GitHub Actions
+.github
+
+# IDE & Editor files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs & Coverage
+*.log
 coverage
 .nyc_output
-.DS_Store
-*.log
+
+# Documentation
+README.md
+docs/
+
+# Test files
+__tests__/
+*.test.js
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.ts
+*.spec.tsx
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
