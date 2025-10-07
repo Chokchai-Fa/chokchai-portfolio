@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   description: "Software Engineer specializing in scalable solutions across financial, insurance, and social network domains",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -182,7 +182,7 @@ const Work = (): JSX.Element => {
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3 
               className="text-4xl font-bold"
@@ -196,7 +196,7 @@ const Work = (): JSX.Element => {
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <motion.div
                 className="bg-[#27272c] rounded-xl p-6 hover:bg-[#2a2a30] transition-colors border border-accent/10 hover:border-accent/30"
@@ -252,7 +252,7 @@ const Work = (): JSX.Element => {
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <h4 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2">
                 <Briefcase className="h-5 w-5 text-accent" />
@@ -285,7 +285,7 @@ const Work = (): JSX.Element => {
             variants={fadeInUp}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3 
               className="text-4xl font-bold"
