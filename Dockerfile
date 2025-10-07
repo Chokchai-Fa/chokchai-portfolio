@@ -7,38 +7,21 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
+# Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-
-# Install dependencies with optimizations
-RUN npm ci --prefer-offline --no-audit --no-fund
+RUN npm ci
 
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
-
-# Copy dependencies
 COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-# Copy source code (optimize layer caching)
-COPY package.json package-lock.json* ./
-COPY next.config.mjs ./
-COPY postcss.config.mjs ./
-COPY tailwind.config.ts ./
-COPY tsconfig.json ./
-COPY components.json ./
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+# ENV NEXT_TELEMETRY_DISABLED=1
 
-# Copy source directories
-COPY app ./app
-COPY components ./components
-COPY lib ./lib
-COPY public ./public
-
-# Disable telemetry for faster builds
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
-
-# Build with optimizations
 RUN npm run build
 
 # Production image, copy all the files and run next
@@ -46,12 +29,12 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy public assets
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
@@ -68,6 +51,7 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
+# set hostname to localhost
 ENV HOSTNAME="0.0.0.0"
 
 # server.js is created by next build from the standalone output
