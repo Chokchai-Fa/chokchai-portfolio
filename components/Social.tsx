@@ -9,10 +9,10 @@ interface Props {
 }
 
 const socials: SocialIcon[] = [
-    { icon: <FaGithub />, path: '' },
-    { icon: <FaLinkedinIn />, path: '' },
-    { icon: <FaFacebook />, path: '' },
-    { icon: <FaInstagram />, path: '' },
+    { icon: <FaGithub />, path: 'https://github.com/Chokchai-Fa' },
+    { icon: <FaLinkedinIn />, path: 'https://www.linkedin.com/in/chokchai-faroongsarng-519957218/' },
+    { icon: <FaFacebook />, path: 'https://www.facebook.com/Chokchai0770/' },
+    { icon: <FaInstagram />, path: 'https://www.instagram.com/phukao.fa/' },
 ]
 
 
@@ -21,7 +21,15 @@ const Social = ({ containerStyles, iconStyles }: Props): JSX.Element => {
         <div className={containerStyles}>
             {socials.map((item, index) => {
                 return (
-                    <Link key={index} href={item.path} className={iconStyles}>{item.icon}</Link>
+                    <Link 
+                        key={index} 
+                        href={item.path} 
+                        className={iconStyles}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {item.icon}
+                    </Link>
                 )
             })}
         </div>
