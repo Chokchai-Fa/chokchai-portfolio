@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Button } from './ui/button'
 
 import Nav from './Nav'
 import MobileNav from './MobileNav'
@@ -18,8 +17,6 @@ const Header = (): JSX.Element => {
         <div className='hidden xl:flex item-center gap-8'>
           <Nav />
         </div>
-
-
         {/* mobile nav */}
         <div className='xl:hidden'>
           <MobileNav />

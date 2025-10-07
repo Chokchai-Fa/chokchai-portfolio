@@ -134,13 +134,13 @@ const Contact = (): JSX.Element => {
               className="text-4xl font-bold"
               variants={fadeInUp}
             >
-              Let's <span className="text-accent">Connect</span>
+              Let&apos;s <span className="text-accent">Connect</span>
             </motion.h1>
             <motion.p 
               className="text-white/60 max-w-[600px] mx-auto xl:mx-0"
               variants={fadeInUp}
             >
-              Ready to collaborate on your next project? I'm always excited to discuss new opportunities,
+              Ready to collaborate on your next project? I&apos;m always excited to discuss new opportunities,
               innovative ideas, and how we can create something amazing together.
             </motion.p>
           </motion.section>
