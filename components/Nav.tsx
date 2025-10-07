@@ -15,10 +15,6 @@ const links: LinkUrl[] = [
         path: "/about"
     },
     {
-        name: "resume",
-        path: "/resume"
-    },
-    {
         name: "work",
         path: "/work"
     },
