@@ -34,6 +34,7 @@ import {
   SiNextdotjs
 } from "react-icons/si";
 import { GiGraduateCap } from "react-icons/gi";
+import { getYearsOfExperience } from "@/lib/utils";
 
 // Animation variants
 const fadeInUp = {
@@ -107,7 +108,7 @@ const scaleIn = {
 // About data
 const about = {
   title: "About me",
-  description: `Passionate Software Engineer with over ${new Date().getFullYear() - 2022}+ years of experience across financial, insurance, and social network domains. I excel in communication, time management, and rapid project execution while providing valuable consultation to optimize processes, improve solutions, and enhance team performance. I maintain a positive attitude and am always open to feedback to continuously grow and resolve challenges.`,
+  description: `Passionate Software Engineer with over ${getYearsOfExperience()}+ years of experience across financial, insurance, and social network domains. I excel in communication, time management, and rapid project execution while providing valuable consultation to optimize processes, improve solutions, and enhance team performance. I maintain a positive attitude and am always open to feedback to continuously grow and resolve challenges.`,
   info: [
     {
       fieldName: "Name",
@@ -115,7 +116,7 @@ const about = {
     },
     {
       fieldName: "Experience",
-      fieldValue: `${new Date().getFullYear() - 2022}+ Years`
+      fieldValue: `${getYearsOfExperience()}+ Years`
     },
     {
       fieldName: "Nationality",

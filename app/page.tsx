@@ -3,6 +3,7 @@ import { FiDownload } from "react-icons/fi"
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Link from "next/link";
+import { getYearsOfExperience } from "@/lib/utils";
 
 const Home = (): JSX.Element => {
   return (
@@ -16,7 +17,7 @@ const Home = (): JSX.Element => {
               Hello I&apos;m <br /> <span className="text-accent">Chokchai Faroongsarng</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              Experienced Software Engineer with 3+ years of expertise across financial, insurance,
+              Experienced Software Engineer with {getYearsOfExperience()}+ years of expertise across financial, insurance,
               and social network domains. I specialize in turning complex business requirements into
               scalable, high-performance solutions that serve millions of users. Currently working at
               LINE Company, I excel in full-stack development, cloud infrastructure, and coordinating

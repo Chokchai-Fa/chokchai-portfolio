@@ -11,6 +11,7 @@ import {
   CheckCircle,
   Briefcase
 } from "lucide-react";
+import { getYearsOfExperience, calculateDuration } from "@/lib/utils";
 
 // Animation variants
 const fadeInUp = {
@@ -71,7 +72,7 @@ const workExperience = [
     id: "line",
     company: "LINE Company (Thailand)",
     position: "Solution Engineer", 
-    duration: "Oct 2024 - Present · 1 yr 1 mo",
+    duration: `Oct 2024 - Present · ${calculateDuration(10, 2024)}`,
     location: "Bangkok City, Thailand · Hybrid",
     type: "Full-time",
     description: "As a Solution Engineer at LINE, I specialize in turning complex business requirements into scalable, high-performance solutions. With experience designing large-scale architectures that support up to 50 million users, I thrive at the intersection of business and technology.",
@@ -208,7 +209,7 @@ const Work = (): JSX.Element => {
                   </div>
                   <h4 className="text-lg font-semibold">Experience</h4>
                 </div>
-                <p className="text-2xl font-bold text-accent mb-2">{new Date().getFullYear() - 2022}+ Years</p>
+                <p className="text-2xl font-bold text-accent mb-2">{getYearsOfExperience()}+ Years</p>
                 <p className="text-white/60 text-sm">
                   Professional software development experience across multiple industries
                 </p>
