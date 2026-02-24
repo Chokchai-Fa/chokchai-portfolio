@@ -137,7 +137,7 @@ const education = {
     {
       institution: "Chulalongkorn University",
       degree: "Master of Science in Computer Science",
-      duration: "Jul 2023 - Present",
+      duration: "Jul 2023 - Dec 2025",
       location: "Bangkok, Thailand",
       gpa: "GPA 4.00",
       department: "Computer Engineering"
