@@ -141,7 +141,13 @@ const education = {
       duration: "Jul 2023 - Dec 2025",
       location: "Bangkok, Thailand",
       gpa: "GPA 4.00",
-      department: "Computer Engineering"
+      department: "Computer Engineering",
+      publications: [
+        {
+          title: "2025 9th International Conference on Information Technology (InCIT)",
+          url: "https://ieeexplore.ieee.org/document/11276076"
+        }
+      ]
     },
     {
       institution: "King Mongkut's University of Technology Thonburi",
@@ -369,6 +375,22 @@ const About = (): JSX.Element => {
                         <p className="text-white/60 text-sm text-center lg:text-left">
                           {item.department}
                         </p>
+                      )}
+                      {item.publications && item.publications.length > 0 && (
+                        <div className="mt-4 pt-4 border-t border-accent/20 w-full">
+                          <p className="text-xs text-accent font-semibold mb-2">Published Papers:</p>
+                          {item.publications.map((paper, idx) => (
+                            <a
+                              key={idx}
+                              href={paper.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs text-blue-400 hover:text-blue-300 transition-colors break-words"
+                            >
+                              • {paper.title}
+                            </a>
+                          ))}
+                        </div>
                       )}
                     </motion.div>
                   );
