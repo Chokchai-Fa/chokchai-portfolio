@@ -378,14 +378,14 @@ const About = (): JSX.Element => {
                       )}
                       {item.publications && item.publications.length > 0 && (
                         <div className="mt-4 pt-4 border-t border-accent/20 w-full">
-                          <p className="text-xs text-accent font-semibold mb-2">Published Papers:</p>
+                          <p className="font-semibold mb-2">Published Papers:</p>
                           {item.publications.map((paper, idx) => (
                             <a
                               key={idx}
                               href={paper.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-xs text-blue-400 hover:text-blue-300 transition-colors break-words"
+                              className=" text-emerald-400 hover:text-emerald-300 transition-colors break-words"
                             >
                               • {paper.title}
                             </a>
